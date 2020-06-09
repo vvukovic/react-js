@@ -1,20 +1,34 @@
 import React from 'react';
 import './App.css';
-import person from './Person'
-import { num1, num2, sum } from './Utility'
+import ClassKomponenta from './components/ClassKomponenta';
+import FunctionKomponenta from './components/FunctionKomponenta';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Moja prva aplikacija!
-        </p>
-        <p>Dobar dan, {person.name}</p>
-        <p>Imate godina: {sum(num1, num2)}</p>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+ 
+  korisnici = [
+    {
+      ime: 'Vedran',
+      godine: 33
+    },
+    {
+      ime: 'Pero',
+      godine: 32
+    },
+    {
+      ime: 'Marko',
+      godine: 35
+    }
+  ];
+  
+  render() {
+
+    return (
+      <div className="App">
+        <ClassKomponenta name="Marijan" /> {/* definiranje imena direktno bez objekta */}
+        <ClassKomponenta name={this.korisnici[0].ime} age={this.korisnici[0].godine} />
+        <FunctionKomponenta name={this.korisnici[1].ime} age={this.korisnici[1].godine} />
+      </div>
+
+    );
+  }
 }
-
-export default App;
